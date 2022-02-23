@@ -1,0 +1,72 @@
+h1, h2, h3, h4, h5, h6 {
+  color: black;
+}
+
+ul {
+  margin: 0;
+}
+
+td a {
+  display: block;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  border-radius: 20px;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  border-radius: 20px;
+}
+
+.page-title {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.page-title-medium {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.page-title-small {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.textinput {
+  border-radius: 20px;
+}
+
+.asteriskField {
+  color: red;
+}
+
+.date {
+  border-radius: 20px;
+}
+
+.btn {
+  padding: 7px 25px;
+  border-radius: 20px;
+}
+
+.alert {
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.content-section {
+  background: #dfdfdf;
+  padding: 5% 10%;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+

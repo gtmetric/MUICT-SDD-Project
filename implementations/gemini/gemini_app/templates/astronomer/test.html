@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+            <a class="navbar-brand mr-4 ml-3" style="font-weight: bold;" href="/">Gemini System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation" style="background-color: rgb(255, 192, 119);">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto"></div>
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="{% url 'create' %}">
+                        Create Science Plan
+                    </a>
+                    <a class="nav-item nav-link" href="{% url 'test' %}" style="color: #FFB800">
+                        Test Science Plan
+                    </a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">
+                        <i class="fas fa-power-off">&nbsp;</i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="text-white text-center mb-5 pt-5 page-title-medium">
+            Test Science Plan
+        </h1>
+        <table class="table table-hover bg-white borderless" style="border-radius: 20px;">
+            <tbody>
+                {% if sciencePlans %}
+                    <tr>
+                        <th class="bg-white pl-5" style="border-radius: 20px 0 0 0;">No.</th>
+                        <th class="bg-white"">Creator</th>
+                        <th class="bg-white"">Star System</th>
+                        <th class="bg-white pr-5" style="border-radius: 0 20px 0 0;">Objectives</th>
+                    </tr>
+                    {% for sciencePlan in sciencePlans %}
+                        <tr class="table-row" data-href="{% url 'test-detail' sciencePlan.plan_no %}" style="border-top: 1px solid rgb(220, 220, 220);">
+                            <td class="pl-5">
+                                {{ sciencePlan.plan_no }}
+                            </td>
+                            <td>
+                                {{ sciencePlan.creator }}
+                            </td>
+                            <td>
+                                {{ sciencePlan.star_system }}
+                            </td>
+                            <td class="pr-5">
+                                {{ sciencePlan.objectives }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td class="bg-white py-5 text-center" style="border-radius: 20px;">
+                            <h5>There is no SUBMITTED science plan to test.</h5>
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+<script>
+    jQuery(document).ready(function($) {
+        $(".table-row").click(function() {
+            window.location = $(this).data("href");
+        });
+    });
+</script>
+    
+{% endblock content %}

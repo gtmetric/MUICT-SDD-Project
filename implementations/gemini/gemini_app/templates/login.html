@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <h1 class="text-white text-center mb-5 page-title">
+            Gemini System
+        </h1>
+        <div class="content-section">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="mb-b text-center">Log In</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group text-center">
+                    <button class="btn btn-primary" type="submit">Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

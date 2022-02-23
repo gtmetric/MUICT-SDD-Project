@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <style>
+        .text {
+            background-color: white;
+            border-radius: 20px;
+        }
+    </style>
+
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+            <a class="navbar-brand mr-4 ml-3" style="font-weight: bold;" href="/">Gemini System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation" style="background-color: rgb(255, 192, 119);">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto"></div>
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">
+                        <i class="fas fa-power-off">&nbsp;</i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="text-white text-center mb-5 pt-5 page-title-medium">
+            Validate Science Plan
+        </h1>
+
+        <div class="content-section">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        Creator
+                    </div>
+                </div>
+                <div class="row mx-1">
+                    <div class="col-sm-12 text py-2 my-2">
+                        {{ object.creator }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        Submitter
+                    </div>
+                </div>
+                <div class="row  mx-1">
+                    <div class="col-sm-12 text py-2 my-2">
+                        {{ object.submitter }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        Funding (USD)
+                    </div>
+                </div>
+                <div class="row  mx-1">
+                    <div class="col-sm-12 text py-2 my-2">
+                        {{ object.funding }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        Objectives
+                    </div>
+                </div>
+                <div class="row mx-1">
+                    <div class="col-sm-12 text py-2 my-2">
+                        {{ object.objectives }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Star system
+                    </div>
+                    <div class="col-sm-6">
+                        Telescope location
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.star_system }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.telescope_location }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Start date
+                    </div>
+                    <div class="col-sm-6">
+                        End date
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.start_date|date:"d/m/Y H:i" }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.end_date|date:"d/m/Y H:i" }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        File type
+                    </div>
+                    <div class="col-sm-6">
+                        File quality
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.file_type }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.file_quality }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        Color type
+                    </div>
+                </div>
+                <div class="row mx-1">
+                    <div class="col-sm-12 text py-2 my-2">
+                        {{ object.color_type }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Contrast
+                    </div>
+                    <div class="col-sm-6">
+                        Exposure
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.star_system }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.exposure }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if object.color_type == "Color mode" %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Brightness
+                    </div>
+                    <div class="col-sm-6">
+                        Saturation
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.brightness }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.saturation }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Hue
+                    </div>
+                    <div class="col-sm-6">
+                        Luminance
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.hue }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.luminance }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Highlights
+                    </div>
+                    <div class="col-sm-6">
+                        Shadows
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.highlights }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.shadows }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Whites
+                    </div>
+                    <div class="col-sm-6">
+                        Blacks
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.whites }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container text py-2 my-2">
+                            {{ object.blacks }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="form-group text-center mt-4">
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" id="status" name="status" value="VALIDATED">
+                            <button class="btn btn-primary" type="submit">Validate</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-4">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" id="status" name="status" value="INVALIDATED">
+                            <button class="btn btn-danger" type="submit">Decline</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
